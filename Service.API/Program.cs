@@ -1,3 +1,4 @@
+using Service.Commons.Utils;
 using Service.Data.Utils;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,7 +10,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-DependencyInjection.AddInfrastructure(builder.Services,builder.Configuration);
+builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddCommons();
 var app = builder.Build();
 
 
