@@ -2,6 +2,8 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Service.Data.Context;
+using Service.Data.UnitOfWork;
+using Service.Data.UnitOfWork.Interfaces;
 using System;
 
 namespace Service.Data.Utils
@@ -13,6 +15,8 @@ namespace Service.Data.Utils
             services.AddDbContext<AppDbContext>(options =>
                  options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")!)
              );
+
+            services.AddScoped<IUnitOfWork, UnitOfWork.UnitOfWork>();
 
             return services;
         }
