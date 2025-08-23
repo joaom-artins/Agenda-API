@@ -5,6 +5,14 @@ using System.Text.Json.Serialization;
 using Service.Commons;
 using Service.Commons.Utils;
 using Service.Data.Utils;
+using FluentValidation;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Options;
+using Service.Data.Context;
+using Service.Domain.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,6 +41,7 @@ builder.Services.AddSingleton<JsonSerializerOptions>(new JsonSerializerOptions
     PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
     WriteIndented = true
 });
+ValidatorOptions.Global.DefaultRuleLevelCascadeMode = CascadeMode.Stop;
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -40,6 +49,30 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddCommons();
+
+builder.Services.AddIdentity<UserModel, IdentityRole<Guid>>()
+    .AddEntityFrameworkStores<AppDbContext>()
+    .AddDefaultTokenProviders();
+
+builder.Services.AddSingleton(sp => sp.GetRequiredService<IOptions<AppSettings>>().Value);
+
+builder.Services.AddAuthentication(auth =>
+{
+    auth.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    auth.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(auth =>
+{
+    auth.RequireHttpsMetadata = true;
+    auth.SaveToken = true;
+    auth.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(appSettings!.Jwt.SecretKey)),
+        ValidateIssuer = false,
+        ValidateAudience = false
+    };
+});
+
 var app = builder.Build();
 
 
