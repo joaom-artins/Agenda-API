@@ -1,0 +1,14 @@
+CREATE DATABASE agenda COLLATE Latin1_General_100_CI_AS_SC_UTF8;
+GO
+
+USE agenda;
+GO
+
+CREATE LOGIN agenda WITH PASSWORD = 'XXEr7Yf%<B0nRI';
+GO
+
+CREATE USER agenda FOR LOGIN agenda;
+GO
+
+ALTER ROLE db_owner ADD MEMBER agenda;
+GO
