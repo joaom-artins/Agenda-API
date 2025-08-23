@@ -9,10 +9,11 @@ using FluentValidation;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Service.Data.Context;
-using Service.Domain.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Service.Domain.Models.v1;
+using Service.Domain.Request.v1.Login;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -42,6 +43,7 @@ builder.Services.AddSingleton<JsonSerializerOptions>(new JsonSerializerOptions
     WriteIndented = true
 });
 ValidatorOptions.Global.DefaultRuleLevelCascadeMode = CascadeMode.Stop;
+builder.Services.AddValidatorsFromAssemblyContaining<LoginRequest>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

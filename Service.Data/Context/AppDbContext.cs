@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Service.Domain.Models;
+using Service.Domain.Models.v1;
 
 namespace Service.Data.Context;
 
