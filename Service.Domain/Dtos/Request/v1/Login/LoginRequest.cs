@@ -1,4 +1,4 @@
-﻿namespace Service.Domain.Request.v1.Login
+﻿namespace Service.Domain.Dtos.Request.v1.Login
 {
     public class LoginRequest
     {

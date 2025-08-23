@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using Service.Domain.Request.v1.Login;
+using Service.Domain.Dtos.Request.v1.Login;
 
-namespace Service.Domain.Validators.v1.Login;
+namespace Service.Domain.Dtos.Validators.v1.Login;
 
 public class LoginRequestValidator : AbstractValidator<LoginRequest>
 {

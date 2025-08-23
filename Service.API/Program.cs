@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Service.Domain.Models.v1;
-using Service.Domain.Request.v1.Login;
+using Service.Domain.Dtos.Request.v1.Login;
 
 var builder = WebApplication.CreateBuilder(args);
 
