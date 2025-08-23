@@ -7,6 +7,8 @@ namespace Service.Domain.Models
     {
         [MaxLength(50)]
         public string Name { get; set; } = string.Empty;
-        
+        [MaxLength(100)]
+        public string Occupation { get; set; } = string.Empty;
+
     }
 }
