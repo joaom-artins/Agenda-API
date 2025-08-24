@@ -15,7 +15,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : IdentityDbCo
         builder.Entity<IdentityRole<Guid>>().ToTable("Roles");
         builder.Entity<IdentityRoleClaim<Guid>>().ToTable("RolesClaim");
         builder.Entity<IdentityUserRole<Guid>>().ToTable("UsersRoles");
-        builder.Entity<IdentityUserLogin<Guid>>().ToTable("UsersLogins");
+        builder.Entity<IdentityUserLogin<Guid>>().ToTable("UsersLogins");   
         builder.Entity<IdentityUserClaim<Guid>>().ToTable("UsersClaims");
 
         builder.Entity<IdentityUserRole<Guid>>().HasKey(p => new { p.UserId, p.RoleId });
