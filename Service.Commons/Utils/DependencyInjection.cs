@@ -13,6 +13,8 @@ public static class DependencyInjection
         services.AddScoped<INotificationContext, NotificationContext>();
         services.AddScoped<IGetLoggedUser, GetLoggedUser>();
 
+        services.AddAutoMapper(cfg => { }, AppDomain.CurrentDomain.GetAssemblies());
+
         return services;
     }
 }
