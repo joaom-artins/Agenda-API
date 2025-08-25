@@ -26,10 +26,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Service.Application\Service.Application.csproj" />
     <ProjectReference Include="..\Service.Commons\Service.Commons.csproj" />
     <ProjectReference Include="..\Service.Data\Service.Data.csproj" />
