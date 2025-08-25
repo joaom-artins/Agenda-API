@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Service.Application.Services.Interfaces.v1;
 using Service.Commons.Notification;
 using Service.Commons.Notification.Interface;
 using Service.Data.Repositories.Interfaces.v1.User;
@@ -17,7 +18,7 @@ public class UserService(
     INotificationContext _notificationContext,
     IUserRepository _userRepository,
     UserManager<UserModel> _userManager
-)
+) : IUserService
 {
     public async Task<IEnumerable<UserGetAllResponse>> GetAllAsync()
     {

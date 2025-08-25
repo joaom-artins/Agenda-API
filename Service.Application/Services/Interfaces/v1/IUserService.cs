@@ -5,7 +5,7 @@ namespace Service.Application.Services.Interfaces.v1;
 
 public interface IUserService
 {
-    Task<IEnumerable<UserGetAllResponse>> GetAll();
-    Task<IEnumerable<UserGetProfessionalsResponse>> GetProfessionals();
+    Task<IEnumerable<UserGetAllResponse>> GetAllAsync();
+    Task<IEnumerable<UserGetProfessionalsResponse>> GetProfessionalsAsync();
     Task<bool> CreateAsync(UserCreateRequest request);
 }

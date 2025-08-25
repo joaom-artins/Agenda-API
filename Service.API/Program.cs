@@ -16,6 +16,7 @@ using Service.Domain.Models.v1;
 using Service.Domain.Dtos.Request.v1.Login;
 using Microsoft.EntityFrameworkCore;
 using Service.Commons.Middlewares;
+using Service.Application.Utils;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -53,6 +54,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddCommons();
+builder.Services.AddApplication();
 
 builder.Services.AddIdentity<UserModel, IdentityRole<Guid>>()
     .AddEntityFrameworkStores<AppDbContext>()
