@@ -9,7 +9,7 @@ namespace Service.Domain.Models.v1
         [MaxLength(50)]
         public string Name { get; set; } = string.Empty;
         [MaxLength(100)]
-        public string Occupation { get; set; } = string.Empty;
+        public string? Occupation { get; set; }
         public UserTypeEnum Type { get; set; }
 
     }

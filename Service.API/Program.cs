@@ -14,6 +14,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Service.Domain.Models.v1;
 using Service.Domain.Dtos.Request.v1.Login;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -85,9 +86,15 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
 app.UseAuthorization();
+app.MapControllers().RequireAuthorization();
 
-app.MapControllers();
+using (var serviceScope = app.Services.GetRequiredService<IServiceScopeFactory>().CreateScope())
+{
+    var dbContext = serviceScope.ServiceProvider.GetService<AppDbContext>();
+    dbContext!.Database.Migrate();
+}
+
 
 app.Run();
