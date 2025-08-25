@@ -13,10 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\Interfaces\v1\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Service.Commons\Service.Commons.csproj" />
     <ProjectReference Include="..\Service.Data\Service.Data.csproj" />
     <ProjectReference Include="..\Service.Domain\Service.Domain.csproj" />

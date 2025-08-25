@@ -11,6 +11,5 @@ namespace Service.Domain.Models.v1
         [MaxLength(100)]
         public string? Occupation { get; set; }
         public UserTypeEnum Type { get; set; }
-
     }
 }

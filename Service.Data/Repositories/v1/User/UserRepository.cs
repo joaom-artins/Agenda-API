@@ -14,5 +14,7 @@ public class UserRepository(
 {
     private readonly AppDbContext _context = context;
 
-    public async Task<IEnumerable<UserModel>> GetProfessionals() => await _context.Users.Where(e => e.Type == UserTypeEnum.Professional).ToListAsync();
+    public async Task<IEnumerable<UserModel>> GetProfessionalsAsync() => await _context.Users.Where(e => e.Type == UserTypeEnum.Professional).ToListAsync();
+
+    public async Task<IEnumerable<UserModel>> GetByEmailOrPhoneNumberAsync(string email, string phoneNumber) => await _context.Users.Where(x => x.Email == email || x.PhoneNumber == phoneNumber).ToListAsync();
 }
