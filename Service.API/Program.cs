@@ -15,6 +15,7 @@ using System.Text;
 using Service.Domain.Models.v1;
 using Service.Domain.Dtos.Request.v1.Login;
 using Microsoft.EntityFrameworkCore;
+using Service.Commons.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -84,6 +85,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<AuthorizationMiddleware>();
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseHttpsRedirection();
 app.UseAuthentication();
