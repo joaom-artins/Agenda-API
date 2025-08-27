@@ -63,7 +63,7 @@ public class LoginService(
         {
             AccessToken = accessToken,
             RefreshToken = refreshToken,
-            ExpiresAt = DateTime.UtcNow.AddSeconds(_appSettings.Jwt.Expiration),
+            ExpiresAt = DateTime.Now.AddSeconds(_appSettings.Jwt.Expiration),
         };
     }
 
@@ -122,7 +122,7 @@ public class LoginService(
         var token = tokenHandle.CreateToken(new SecurityTokenDescriptor
         {
             Subject = new ClaimsIdentity(claims),
-            Expires = DateTime.UtcNow.AddSeconds(_appSettings.Jwt.Expiration),
+            Expires = DateTime.Now.AddSeconds(_appSettings.Jwt.Expiration),
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
         });
 
