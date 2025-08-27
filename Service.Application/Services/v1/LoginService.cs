@@ -14,6 +14,7 @@ using Service.Domain.Dtos.Responses.v1.Users;
 using Service.Data.Repositories.v1;
 using System.Security.Cryptography;
 using Service.Data.UnitOfWork.Interfaces;
+using Service.Application.Services.Interfaces.v1;
 
 namespace Service.Application.Services.v1;
 
@@ -25,7 +26,7 @@ public class LoginService(
     IUserRefreshTokenRepository _userRefreshTokenRepository,
     INotificationContext _notificationContext,
     UserManager<UserModel> _userManager
-)
+) : ILoginService
 {
     public async Task<LoginResponse> LoginAsync(LoginRequest request)
     {
