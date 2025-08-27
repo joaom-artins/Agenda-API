@@ -10,6 +10,8 @@ public static class DependencyInjection
     {
         services.AddScoped<IUserService, UserService>();
 
+        services.AddAutoMapper(cfg => { }, AppDomain.CurrentDomain.GetAssemblies());
+
         return services;
     }
 }

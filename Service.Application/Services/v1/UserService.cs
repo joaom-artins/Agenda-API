@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Service.Application.Services.Interfaces.v1;
 using Service.Commons.Notification;
 using Service.Commons.Notification.Interface;
-using Service.Data.Repositories.Interfaces.v1.User;
+using Service.Data.Repositories.Interfaces.v1;
 using Service.Data.UnitOfWork.Interfaces;
 using Service.Domain.Dtos.Request.v1.Users;
 using Service.Domain.Dtos.Responses.v1.Users;
@@ -95,7 +95,7 @@ public class UserService(
     //TODO : Migrar método para uma business ou userHelper da vida mais para frente
     private async Task<bool> ExistsByEmailOrPhoneNumber(string email, string phoneNumber)
     {
-        var userExists = await _userRepository.GetByEmailOrPhoneNumberAsync(email, phoneNumber);
+        var userExists = await _userRepository.FindByEmailOrPhoneNumberAsync(email, phoneNumber);
         if (userExists.Any())
         {
             if (userExists.Any(x => x.UserName == phoneNumber))

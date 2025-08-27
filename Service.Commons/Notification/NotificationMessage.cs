@@ -15,5 +15,7 @@ public class NotificationMessage
         public static readonly string PasswordAreDifferent = "As senhas são diferentes!";
         public static readonly string EmailAlreadyExists = "Email já está em uso!";
         public static readonly string PhoneNumberAlreadyExists = "Número de telefone já está em uso!";
+        public static readonly string InvalidData = "Dados inválidos!";
+        public static readonly string NotFound = "Usuário não encontrado!";
     }
 }
