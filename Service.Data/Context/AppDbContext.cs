@@ -9,6 +9,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : IdentityDbCo
 {
     public override DbSet<UserModel> Users { get; set; } = default!;
     public DbSet<UserRefreshTokenModel> UserRefreshTokens { get; set; } = default!;
+    public DbSet<AvailabilitySlotModel> AvailabilitySlots { get; set; } = default!;
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
