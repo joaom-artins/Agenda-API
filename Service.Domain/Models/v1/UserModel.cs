@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Identity;
-using Service.Domain.Enums.v1.User;
+using Service.Domain.Enums.v1;
 
 namespace Service.Domain.Models.v1
 {

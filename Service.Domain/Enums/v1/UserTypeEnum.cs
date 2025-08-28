@@ -1,4 +1,4 @@
-﻿namespace Service.Domain.Enums.v1.User;
+﻿namespace Service.Domain.Enums.v1;
 
 public enum UserTypeEnum
 {

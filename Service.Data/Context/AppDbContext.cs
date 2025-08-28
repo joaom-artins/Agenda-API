@@ -7,9 +7,10 @@ namespace Service.Data.Context;
 
 public class AppDbContext(DbContextOptions<AppDbContext> options) : IdentityDbContext<UserModel, IdentityRole<Guid>, Guid>(options)
 {
+    public DbSet<AvailabilitySlotModel> AvailabilitySlots { get; set; } = default!;
+    public DbSet<AppointmentModel> Appointments { get; set; } = default!;
     public override DbSet<UserModel> Users { get; set; } = default!;
     public DbSet<UserRefreshTokenModel> UserRefreshTokens { get; set; } = default!;
-    public DbSet<AvailabilitySlotModel> AvailabilitySlots { get; set; } = default!;
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

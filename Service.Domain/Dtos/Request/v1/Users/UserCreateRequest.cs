@@ -1,4 +1,4 @@
-﻿using Service.Domain.Enums.v1.User;
+﻿using Service.Domain.Enums.v1;
 
 namespace Service.Domain.Dtos.Request.v1.Users;
 
