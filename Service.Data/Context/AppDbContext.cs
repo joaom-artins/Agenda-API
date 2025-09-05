@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Service.Domain.Models.v1;
+using System.Reflection.Emit;
 
 namespace Service.Data.Context;
 
@@ -24,5 +25,11 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : IdentityDbCo
         builder.Entity<IdentityUserClaim<Guid>>().ToTable("UsersClaims");
 
         builder.Entity<IdentityUserRole<Guid>>().HasKey(p => new { p.UserId, p.RoleId });
+
+        builder.Entity<AppointmentModel>()
+            .HasOne(a => a.Client)  
+            .WithMany()           
+            .HasForeignKey(a => a.ClientId)
+            .OnDelete(DeleteBehavior.NoAction); 
     }
 }

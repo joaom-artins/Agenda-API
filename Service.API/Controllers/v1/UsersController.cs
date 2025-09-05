@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Service.Application.Services.Interfaces.v1;
 using Service.Domain.Dtos.Request.v1.Users;
@@ -13,6 +14,23 @@ public class UsersController(
     IUserService _userService
 ) : ControllerBase
 {
+    /// <summary>
+    /// ANONYMOUS: Retorna Lista de profissionais
+    /// </summary>
+    /// <response code="204">Retorna sucesso da operação</response>
+    /// <response code="500">Retorna erro interno do servidor</response>
+    [HttpPost]
+    [AllowAnonymous]
+    [Route("professionals")]
+    [ProducesResponseType(typeof(UserGetProfessionalsResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+    public async Task<IActionResult> GetProfessionalsAsync()
+    {
+        var records = await _userService.GetProfessionalsAsync();
+
+        return Ok(records);
+    }
+
     /// <summary>
     /// ANONYMOUS: Cria um usuário
     /// </summary>

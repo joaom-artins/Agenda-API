@@ -18,4 +18,13 @@ public class NotificationMessage
         public static readonly string InvalidData = "Dados inválidos!";
         public static readonly string NotFound = "Usuário não encontrado!";
     }
+
+    public static class AvailabilitySlot
+    {
+        public static readonly string EndTimeCannotBeLessThanStart = "Horário final não pode ser menos que inicial!";
+        public static readonly string TimesCannotBeSame = "Horários não pode ser iguais!";
+        public static readonly string InvalidDate = "Horário inválido!";
+        public static readonly string ImpossibleCreate = "Apenas profissionais podem criar horários!";
+
+    }
 }
